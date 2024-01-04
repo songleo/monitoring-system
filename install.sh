@@ -1,5 +1,13 @@
 #!/usr/bin/env bash
 
+# TODO
+# check yaml
+# check json
+# check rules
+# check conf for all components
+
+promtool check rules prometheus/alerting_rules.yml || exit 1
+
 ## update the HOST_IP for all configuration files
 sed_cmd="sed -i"
 OS=$(uname)
@@ -8,13 +16,21 @@ if [[ "$OS" == "Darwin" ]]; then
 fi
 ${sed_cmd} "s/__HOST_IP__/$HOST_IP/g" prometheus/prometheus.yml grafana/datasources/datasource.yml
 
-docker rm -f prometheus grafana node_exporter redis redis_exporter  > /dev/null
+docker rm -f prometheus grafana node_exporter redis redis_exporter alertmanager  > /dev/null
+
 echo "starting prometheus ..."
 docker run -d \
-    -v "$(pwd)"/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml \
+    -v "$(pwd)"/prometheus/:/etc/prometheus/ \
     -p 9090:9090 \
     --name prometheus \
     prom/prometheus > /dev/null
+
+echo "starting alertmanager ..."
+docker run -d \
+    -v "$(pwd)"/alertmanager/alertmanager.yml:/etc/alertmanager/alertmanager.yml \
+    --name alertmanager \
+    -p 9093:9093 \
+    quay.io/prometheus/alertmanager --config.file=/etc/alertmanager/alertmanager.yml > /dev/null
 
 echo "starting grafana ..."
 docker run -d \
@@ -39,4 +55,3 @@ docker run -d \
     --name redis_exporter \
     -p 9121:9121 oliver006/redis_exporter \
     --redis.addr redis://"${HOST_IP}":6379  > /dev/null
-
