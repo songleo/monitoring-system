@@ -2,6 +2,7 @@ This repository provides a tool for rapidly establishing a monitoring system, id
 
 All components are installed and initiated on local host as Docker containers. It primarily includes the following components:
 
+- alertmanager
 - grafana
 - node-exporter
 - prometheus
@@ -25,6 +26,7 @@ $ ./install.sh
 
 - [Prometheus UI](http://localhost:9090/graph)
 - [Grafana UI](http://localhost:3000/)
+- [Alertmanager UI](http://localhost:9093/#/alerts)
 
 ### Metric Endpoint
 
