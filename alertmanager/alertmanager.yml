@@ -1,0 +1,13 @@
+# https://prometheus.io/docs/alerting/latest/configuration/
+global:
+  resolve_timeout: 5m
+
+route:
+  group_by: [alertname]
+  group_wait: 10s
+  group_interval: 10s
+  repeat_interval: 1h
+  receiver: dummy
+
+receivers:
+- name: dummy

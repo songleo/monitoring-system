@@ -1,0 +1,28 @@
+# https://prometheus.io/docs/prometheus/latest/configuration/configuration/
+global:
+  scrape_interval: 15s
+
+alerting:
+  alertmanagers:
+  - static_configs:
+    - targets:
+      - __HOST_IP__:9093
+
+scrape_configs:
+- job_name: prometheus
+  static_configs:
+  - targets:
+    - localhost:9090
+
+- job_name: node_exporter
+  static_configs:
+  - targets:
+    - __HOST_IP__:9100
+
+- job_name: redis_exporter
+  static_configs:
+  - targets:
+    - __HOST_IP__:9121
+
+rule_files:
+- alerting_rules.yml

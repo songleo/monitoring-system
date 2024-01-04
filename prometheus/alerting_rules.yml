@@ -1,0 +1,22 @@
+# https://prometheus.io/docs/prometheus/latest/configuration/alerting_rules/
+groups:
+- name: watchdog
+  rules:
+  - alert: WatchDog
+    expr: vector(1)
+    labels:
+      severity: info
+    annotations:
+      description: This is a watchdog alert meant to ensure that the entire alerting pipeline is functional.
+      summary: Watchdog alert
+
+- name: redis
+  rules:
+  - alert: RedisDown
+    expr: redis_up == 0
+    for: 1m
+    labels:
+      severity: critical
+    annotations:
+      summary: Redis is down
+      description: Redis server has been down for more than 1 minute.
