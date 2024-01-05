@@ -13,7 +13,7 @@ All [dashboards](grafana/dashboards) are sourced from: https://grafana.com/grafa
 
 ### Prerequisites
 
-- Docker
+- docker
 
 ### Building Monitoring System
 
@@ -26,7 +26,7 @@ $ export HOST_IP=192.168.0.106
 $ ./install.sh
 ```
 
-### Access Consoles
+### Access Console
 
 - [Prometheus UI](http://localhost:9090/graph)
 - [Grafana UI](http://localhost:3000/)

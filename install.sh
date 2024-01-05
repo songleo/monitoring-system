@@ -30,7 +30,7 @@ docker run -d \
     -v "$(pwd)"/alertmanager/alertmanager.yml:/etc/alertmanager/alertmanager.yml \
     --name alertmanager \
     -p 9093:9093 \
-    quay.io/prometheus/alertmanager --config.file=/etc/alertmanager/alertmanager.yml > /dev/null
+    prom/alertmanager --config.file=/etc/alertmanager/alertmanager.yml > /dev/null
 
 echo "starting grafana ..."
 docker run -d \
