@@ -1,6 +1,6 @@
-This repository provides a tool for rapidly establishing a monitoring system, ideal for Proof of Concept (PoC), educational or testing purposes. This monitoring system does not provide persistent storage for the monitoring data. So when you restart the whole monitoring system, it will reset all status.
+This repository offers a tool for quickly setting up a monitoring system utilizing the Prometheus and Grafana monitoring stack. It's perfect for Proof of Concept (PoC), educational, or testing scenarios. Note that this monitoring setup does not include persistent storage for monitoring data, so restarting the system will reset all statuses.
 
-All components are installed and initiated on local host as Docker containers. It primarily includes the following components:
+All components are deployed as Docker containers on the local host, including:
 
 - alertmanager
 - grafana
@@ -20,6 +20,8 @@ All [dashboards](grafana/dashboards) are sourced from: https://grafana.com/grafa
 You need to provide the local host ip via env. For example, if you local host ip is `192.168.0.106`, run the following cmd to build the monitoring system.
 
 ```
+$ git clone git@github.com:songleo/monitoring-system.git
+$ cd monitoring-system/
 $ export HOST_IP=192.168.0.106
 $ ./install.sh
 ```
