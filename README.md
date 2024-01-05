@@ -17,6 +17,8 @@ All [dashboards](grafana/dashboards) are sourced from: https://grafana.com/grafa
 
 ### Building Monitoring System
 
+You need to provide the local host ip via env. For example, if you local host ip is `192.168.0.106`, run the following cmd to build the monitoring system.
+
 ```
 $ export HOST_IP=192.168.0.106
 $ ./install.sh
