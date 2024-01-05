@@ -1,4 +1,4 @@
-This repository provides a tool for rapidly establishing a monitoring system, ideal for Proof of Concept (PoC), educational or testing purposes.
+This repository provides a tool for rapidly establishing a monitoring system, ideal for Proof of Concept (PoC), educational or testing purposes. This monitoring system does not provide persistent storage for the monitoring data. So when you restart the whole monitoring system, it will reset all status.
 
 All components are installed and initiated on local host as Docker containers. It primarily includes the following components:
 
