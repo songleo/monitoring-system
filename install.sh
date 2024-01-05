@@ -16,7 +16,7 @@ if [[ "$OS" == "Darwin" ]]; then
 fi
 ${sed_cmd} "s/__HOST_IP__/$HOST_IP/g" prometheus/prometheus.yml grafana/datasources/datasource.yml
 
-docker rm -f prometheus grafana node_exporter redis redis_exporter alertmanager  > /dev/null
+# docker rm -f prometheus grafana node_exporter redis redis_exporter alertmanager  > /dev/null
 
 echo "starting prometheus ..."
 docker run -d \
